@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IsPackable>true</IsPackable>
+        <PackageIcon>Nuke.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+
+        <NoPackageAnalysis>false</NoPackageAnalysis>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+
+        <Title>dosymep.Nuke.RevitVersions</Title>
+        <PackageId>dosymep.Nuke.RevitVersions</PackageId>
+
+        <Authors>dosymep</Authors>
+        <Company>dosymep</Company>
+        <Copyright>© dosymep 2023</Copyright>
+        <Description>This package contains Autodesk Revit versions configurations.</Description>
+        <PackageTags>dosymep, nuke, nuke-build, revit, sdk, api, sdk, autodesk, revitapi, revitsdk</PackageTags>
+
+        <RepositoryType>Git</RepositoryType>
+        <RepositoryUrl>https://github.com/dosymep/dosymep.Nuke.RevitVersions.git</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/dosymep/dosymep.Nuke.RevitVersions</PackageProjectUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="../../README.md" Pack="true" PackagePath="README.md" />
+        <Content Include="../../LICENSE.md" Pack="true" PackagePath="LICENSE.md" />
+        <Content Include="../../assets/Nuke.png" Pack="true" PackagePath="Nuke.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Nuke.Common" Version="7.0.0" />
+    </ItemGroup>
+
+</Project>
