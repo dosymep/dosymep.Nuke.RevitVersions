@@ -5,6 +5,9 @@ using Nuke.Common.Tooling;
 
 namespace dosymep.Nuke.RevitVersions;
 
+/// <summary>
+/// Revit version configurations.
+/// </summary>
 [TypeConverter(typeof(TypeConverter<RevitVersion>))]
 public class RevitVersion : Enumeration {
     /// <summary>
@@ -57,8 +60,18 @@ public class RevitVersion : Enumeration {
     /// </summary>
     public string TargetFramework { get; set; } = default!;
 
+    /// <summary>
+    /// String implicit operator.
+    /// </summary>
+    /// <param name="revitVersion">Revit version.</param>
+    /// <returns>Returns a string representation of the version.</returns>
     public static implicit operator string(RevitVersion revitVersion) => revitVersion.Value;
 
+    /// <summary>
+    /// Int32 implicit operator.
+    /// </summary>
+    /// <param name="revitVersion">Revit version.</param>
+    /// <returns>Returns a Int32 representation of the version.</returns>
     public static implicit operator int(RevitVersion revitVersion) => int.Parse(revitVersion.Value);
 
     /// <summary>
