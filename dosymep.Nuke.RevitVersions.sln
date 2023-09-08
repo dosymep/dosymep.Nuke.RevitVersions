@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dosymep.Nuke.RevitVersions", "dosymep.Nuke.RevitVersions\dosymep.Nuke.RevitVersions.csproj", "{0D2860C5-4B2B-4D5B-ACAA-A8F22E909FB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dosymep.Nuke.RevitVersions", "src/dosymep.Nuke.RevitVersions\dosymep.Nuke.RevitVersions.csproj", "{0D2860C5-4B2B-4D5B-ACAA-A8F22E909FB9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{536B6F71-70EB-4BFA-AD3E-B7D1667A69B1}"
 	ProjectSection(SolutionItems) = preProject
