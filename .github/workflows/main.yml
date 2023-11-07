@@ -1,0 +1,68 @@
+name: main
+
+on:
+  workflow_dispatch:
+
+env:
+  output: bin
+  project: dosymep.Nuke.RevitVersions
+  configuration: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      # Install the .NET Core workload
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      
+      # Build project: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build
+      - name: Build
+        run: dotnet build -c ${{ configuration }}
+
+      - name: Pack
+        run: dotnet pack -c ${{ configuration }} -o ${{ output }}
+      
+      # Fetch version: https://github.com/kzrnm/get-net-sdk-project-versions-action
+      - name: Fetch version
+        uses: kzrnm/get-net-sdk-project-versions-action@v1
+        id: get-version
+        with:
+          proj-path: ${{ project }}/${{ project }}.csproj
+      
+      # Upload the nuget package: https://github.com/marketplace/actions/upload-a-build-artifact
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ project }}
+          path: ${{ output }}/*.nupkg
+      
+      # Publish the nuget package: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
+      - name: Publish nuget
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ${{ output }}/*.nupkg -s https://nuget.pkg.github.com/${{ github.REPOSITORY_OWNER }}/index.json -k $NUGET_API_KEY
+      
+      # Publish the nuget package: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
+      - name: Publish github
+        env:
+          NUGET_API_KEY: ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push ${{ output }}/*.nupkg -s https://nuget.pkg.github.com/${{ github.REPOSITORY_OWNER }}/index.json -k $NUGET_API_KEY
+      
+      # Publish release: https://github.com/softprops/action-gh-release
+      - name: Publish Release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ ${{steps.get-version.outputs.assembly-version}} }}
+          name: ${{ project }} v${{ ${{steps.get-version.outputs.assembly-version}} }}
+          body_path: README.md
+          draft: false
+          prerelease: false
+          files: |
+            ${{ output }}/*.nupkg
