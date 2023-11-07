@@ -25,12 +25,12 @@ class Build : NukeBuild {
     /// <summary>
     /// Min Revit version.
     /// </summary>
-    [Parameter] readonly RevitVersion MinVersion = RevitVersion.Rv2016;
+    [Parameter("Min Revit version.")] readonly RevitVersion MinVersion = RevitVersion.Rv2016;
 
     /// <summary>
     /// Max Revit version.
     /// </summary>
-    [Parameter] readonly RevitVersion MaxVersion = RevitVersion.Rv2016;
+    [Parameter("Max Revit version.")] readonly RevitVersion MaxVersion = RevitVersion.Rv2024;
 
     /// <summary>
     /// The name of the project to be compiled.
