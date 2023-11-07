@@ -52,7 +52,9 @@ jobs:
 
       # Publish the nuget package: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
       - name: Publish github
-        run: dotnet nuget push ${{ env.output }}/*.nupkg -s https://nuget.pkg.github.com/${{ github.REPOSITORY_OWNER }}/index.json -k ${{ github.TOKEN }} --skip-duplicate
+        env:
+          NUGET_API_KEY: ${{ github.TOKEN }}
+        run: dotnet nuget push ${{ env.output }}/*.nupkg -s https://nuget.pkg.github.com/${{ github.REPOSITORY_OWNER }}/index.json -k $NUGET_API_KEY --skip-duplicate
       
       # Publish release: https://github.com/softprops/action-gh-release
       - name: Publish Release
