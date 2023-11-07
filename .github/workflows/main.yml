@@ -1,7 +1,7 @@
 name: main
 
 permissions:
-  packages: read
+  packages: write
 
 on:
   workflow_dispatch:
