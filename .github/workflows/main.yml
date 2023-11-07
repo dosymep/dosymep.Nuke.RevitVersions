@@ -59,8 +59,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ steps.get-version.outputs.assembly-version }}
-          name: ${{ env.project }} v${{ steps.get-version.outputs.assembly-version }}
+          tag_name: v${{ steps.get-version.outputs.package-version }}
+          name: ${{ env.project }} v${{ steps.get-version.outputs.package-version }}
           body_path: README.md
           draft: false
           prerelease: false
