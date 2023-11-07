@@ -32,7 +32,7 @@ jobs:
         uses: kzrnm/get-net-sdk-project-versions-action@v1
         id: get-version
         with:
-          proj-path: ${{ env.project }}/${{ env.project }}.csproj
+          proj-path: src/${{ env.project }}/${{ env.project }}.csproj
       
       # Upload the nuget package: https://github.com/marketplace/actions/upload-a-build-artifact
       - name: Upload
