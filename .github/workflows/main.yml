@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
+          source-url: https://nuget.pkg.github.com/${{ github.REPOSITORY_OWNER }}/index.json
       
       # Build project: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-build
       - name: Build
@@ -42,16 +43,16 @@ jobs:
           path: ${{ env.output }}/*.nupkg
       
       # Publish the nuget package: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
+      - name: Publish github
+        env:
+          NUGET_API_KEY: ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push ${{ env.output }}/*.nupkg
+
+      # Publish the nuget package: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
       - name: Publish nuget
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: dotnet nuget push ${{ env.output }}/*.nupkg -s https://api.nuget.org/v3/index.json -k $NUGET_API_KEY
-      
-      # Publish the nuget package: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
-      - name: Publish github
-        env:
-          NUGET_API_KEY: ${{ secrets.GITHUB_TOKEN }}
-        run: dotnet nuget push ${{ env.output }}/*.nupkg -s https://nuget.pkg.github.com/${{ github.REPOSITORY_OWNER }}/index.json -k $NUGET_API_KEY
       
       # Publish release: https://github.com/softprops/action-gh-release
       - name: Publish Release
