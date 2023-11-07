@@ -2,6 +2,7 @@ name: main
 
 permissions:
   packages: write
+  contents: write
 
 on:
   workflow_dispatch:
@@ -60,7 +61,7 @@ jobs:
       - name: Publish Release
         uses: softprops/action-gh-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.TOKEN }}
         with:
           tag_name: v${{ steps.get-version.outputs.package-version }}
           name: ${{ env.project }} v${{ steps.get-version.outputs.package-version }}
