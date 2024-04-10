@@ -17,7 +17,7 @@ This package contains Autodesk Revit versions configurations.
 /// <summary>
 /// Max Revit version.
 /// </summary>
-[Parameter("Max Revit version.")] readonly RevitVersion MaxVersion = RevitVersion.Rv2024;
+[Parameter("Max Revit version.")] readonly RevitVersion MaxVersion = RevitVersion.Rv2025;
     
 DotNetBuild(s => s
     .EnableForce()
