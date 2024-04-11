@@ -13,10 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - This `CHANGELOG.md` file
 - Sample project support Revit 2025
 - Sample project reference to [Autodesk.Revit.Sdk.Refs](https://github.com/dosymep/Autodesk.Revit.Sdk.Refs)
+- Add to [Workflow](.github/workflows/main.yml) opened PR event
 
 ### Changed
 
 - Nuke.Common version to `8.0.0`
+- Update [Workflow](.github/workflows/main.yml) release branch
 
 ## [v1.0.0] - 2023-11-7
 
