@@ -73,7 +73,7 @@ jobs:
         with:
           tag_name: v${{ steps.get-version.outputs.package-version }}
           name: v${{ steps.get-version.outputs.package-version }}
-          body_path: v${{ steps.get-version.outputs.package-version }}
+          body: v${{ steps.get-version.outputs.package-version }}
           draft: true
           prerelease: false
           files: |
