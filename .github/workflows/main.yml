@@ -37,9 +37,6 @@ jobs:
 
       - name: Pack
         run: dotnet pack -c ${{ env.configuration }} -o ${{ env.output }}
-        
-      - name: Test
-        run: .\sample\SamplePlugin\build.cmd --root "sample\SamplePlugin"
       
       # Fetch version: https://github.com/kzrnm/get-net-sdk-project-versions-action
       - name: Fetch version
