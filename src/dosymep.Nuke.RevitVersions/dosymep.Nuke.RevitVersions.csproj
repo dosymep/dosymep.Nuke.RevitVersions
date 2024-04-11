@@ -5,6 +5,9 @@
         <LangVersion>12</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <TargetFramework>net6.0</TargetFramework>
+
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
@@ -45,6 +48,7 @@
 
     <ItemGroup>
         <PackageReference Include="Nuke.Common" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
     </ItemGroup>
 
 </Project>
