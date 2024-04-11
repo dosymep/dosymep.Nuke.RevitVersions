@@ -40,7 +40,7 @@ jobs:
       
       # Fetch version: https://github.com/kzrnm/get-net-sdk-project-versions-action
       - name: Fetch version
-        uses: kzrnm/get-net-sdk-project-versions-action@v1
+        uses: kzrnm/get-net-sdk-project-versions-action@v2
         id: get-version
         with:
           proj-path: src/${{ env.project }}/${{ env.project }}.csproj
