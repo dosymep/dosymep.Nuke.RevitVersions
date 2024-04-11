@@ -10,14 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Revit 2025 support
-- This CHANGELOG.md file
-- Sample project to support Revit 2025
+- This `CHANGELOG.md` file
+- Sample project support Revit 2025
 - Sample project reference to [Autodesk.Revit.Sdk.Refs](https://github.com/dosymep/Autodesk.Revit.Sdk.Refs)
 
 ### Changed
 
-- Target framework to `net8.0`
-- Nuke.Common reference to '8.0.0'
+- Nuke.Common version to `8.0.0`
 
 ## [v1.0.0] - 2023-11-7
 
