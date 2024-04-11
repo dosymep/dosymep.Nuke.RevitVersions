@@ -17,7 +17,7 @@ env:
   output: bin
   project: dosymep.Nuke.RevitVersions
   configuration: Release
-  release_branch: "refs/heads/master"
+  default_branch: ${{ github.event.repository.default_branch }}
 
 jobs:
   build:
@@ -54,17 +54,17 @@ jobs:
 
       # Publish the nuget package: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
       - name: Publish nuget
-        if: github.ref == env.release_branch
+        if: github.ref_name == env.default_branch
         run: dotnet nuget push ${{ env.output }}/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
 
       # Publish the nuget package: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
       - name: Publish github
-        if: github.ref == env.release_branch
+        if: github.ref_name == env.default_branch
         run: dotnet nuget push ${{ env.output }}/*.nupkg -s https://nuget.pkg.github.com/${{ github.REPOSITORY_OWNER }}/index.json -k ${{ github.TOKEN }} --skip-duplicate
       
       # Publish release: https://github.com/softprops/action-gh-release
       - name: Publish Release
-        if: github.ref == env.release_branch
+        if: github.ref_name == env.default_branch
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
