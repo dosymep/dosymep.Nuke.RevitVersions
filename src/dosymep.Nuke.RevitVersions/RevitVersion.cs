@@ -54,6 +54,11 @@ public class RevitVersion : Enumeration {
     /// Autodesk Revit 2024 version configuration.
     /// </summary>
     public static readonly RevitVersion Rv2024 = new() {Value = "2024", TargetFramework = "net48"};
+    
+    /// <summary>
+    /// Autodesk Revit 2025 version configuration.
+    /// </summary>
+    public static readonly RevitVersion Rv2025 = new() {Value = "2025", TargetFramework = "net8.0-windows"};
 
     /// <summary>
     /// Target framework.
@@ -84,7 +89,7 @@ public class RevitVersion : Enumeration {
     /// Returns list Revit versions by
     /// <paramref name="minVersion"/> and <paramref name="maxVersion"/>.
     /// </returns>
-    public static IEnumerable<RevitVersion> GetRevitVersions(int minVersion = 2016, int maxVersion = 2024) =>
+    public static IEnumerable<RevitVersion> GetRevitVersions(int minVersion = 2016, int maxVersion = 2025) =>
         typeof(RevitVersion).GetFields(BindingFlags.Static | BindingFlags.Public)
             .Where(item => item.Name.StartsWith("Rv"))
             .Select(item => item.GetValue(null))
