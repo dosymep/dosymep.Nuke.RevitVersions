@@ -12,6 +12,10 @@
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="../../.github/workflows/*.yml" LinkBase="ci"/>
+    </ItemGroup>
 
     <PropertyGroup>
         <IsPackable>true</IsPackable>
