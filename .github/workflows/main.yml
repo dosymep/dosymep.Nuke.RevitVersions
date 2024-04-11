@@ -49,8 +49,10 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.project }}.nupkg
-          path: ${{ env.output }}/*.nupkg
+          name: nuget
+          path: |
+            ${{ env.output }}/*.nupkg
+            ${{ env.output }}/*.snupkg
 
       # Publish the nuget package: https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
       - name: Publish nuget
@@ -71,8 +73,9 @@ jobs:
         with:
           tag_name: v${{ steps.get-version.outputs.package-version }}
           name: v${{ steps.get-version.outputs.package-version }}
-          body_path: README.md
-          draft: false
+          body_path: v${{ steps.get-version.outputs.package-version }}
+          draft: true
           prerelease: false
           files: |
             ${{ env.output }}/*.nupkg
+            ${{ env.output }}/*.snupkg
